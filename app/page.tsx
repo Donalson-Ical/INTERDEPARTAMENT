@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main className="p-8 bg-gray-900 min-h-screen text-white">
-      <h1 className="text-3xl font-bold text-center">INTERDEPARTAMENT ⚽ Mi Web de Fútbol</h1>
+      <h1 className="text-3xl font-bold text-center">INTERDEPARTAMENT ⚽ Web de Fútbol</h1>
       <p className="text-center text-gray-400 mt-4">Selecciona un endpoint para ver datos</p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 max-w-xl mx-auto">

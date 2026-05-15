@@ -34,3 +34,4 @@ export async function GET(request: Request) {
 }
 
 //http://localhost:3000/api/stats?competition=PD&limit=20
+//jugadores con más goles, asistencias, penales, etc. en la temporada actual de la liga española (PD)
