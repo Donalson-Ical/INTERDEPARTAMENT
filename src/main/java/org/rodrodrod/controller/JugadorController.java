@@ -26,17 +26,35 @@ public class JugadorController {
         return service.obtenerTodos();
     }
 
+    // GET /api/jugadores/ordenados → todos ordenados por ID (AVL)
+    @GetMapping("/ordenados")
+    public Jugador[] obtenerOrdenados() {
+        return service.obtenerOrdenadosPorId();
+    }
+
     // GET /api/jugadores/{id} → buscar por ID (usa AVL)
     @GetMapping("/{id}")
     public Jugador buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id);
     }
 
+    // GET /api/jugadores/exacto?nombre=xxx → búsqueda exacta por nombre (usa Hash)
+    @GetMapping("/exacto")
+    public Jugador buscarNombreExacto(@RequestParam String nombre) {
+        return service.buscarNombreExacto(nombre);
+    }
+
+    // GET /api/jugadores/buscar?nombre=xxx → búsqueda parcial (usa Lista)
+    @GetMapping("/buscar")
+    public Jugador[] buscarPorNombre(@RequestParam String nombre) {
+        return service.buscarPorNombre(nombre);
+    }
+
     // POST /api/jugadores → agregar jugador
     @PostMapping
-    public String agregar(@RequestBody Jugador jugador) {
+    public Jugador agregar(@RequestBody Jugador jugador) {
         service.agregar(jugador);
-        return "Jugador agregado: " + jugador.getNombre();
+        return jugador;
     }
 
     // DELETE /api/jugadores/{id}?nombre=xxx → eliminar

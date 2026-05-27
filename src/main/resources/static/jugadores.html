@@ -330,7 +330,7 @@
     };
 
     if (!jugador.id || !jugador.nombre || !jugador.equipo || !jugador.posicion) {
-      toast('Completa ID, nombre, equipo y posición', 'err'); return;
+      toast('⚠ Completa ID, nombre, equipo y posición', 'err'); return;
     }
 
     try {
@@ -340,14 +340,13 @@
         body: JSON.stringify(jugador)
       });
       if (!res.ok) throw new Error();
-      toast('Jugador agregado correctamente');
-      // limpiar campos
+      toast('✓ Jugador agregado correctamente');
       ['fId','fNombre','fEquipo','fEdad','fNacionalidad','fGoles','fAsistencias','fPartidos','fPases']
         .forEach(id => document.getElementById(id).value = '');
       document.getElementById('fPosicion').value = '';
       cargar();
     } catch {
-      toast('Error al agregar jugador', 'err');
+      toast('✗ Error al agregar jugador', 'err');
     }
   }
 
@@ -356,10 +355,10 @@
     try {
       const res = await fetch(`${API}/${id}?nombre=${encodeURIComponent(nombre)}`, { method: 'DELETE' });
       if (!res.ok) throw new Error();
-      toast('Jugador eliminado');
+      toast('✓ Jugador eliminado');
       cargar();
     } catch {
-      toast('Error al eliminar jugador', 'err');
+      toast('✗ Error al eliminar jugador', 'err');
     }
   }
 
