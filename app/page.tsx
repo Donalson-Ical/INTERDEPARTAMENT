@@ -6,22 +6,22 @@ export default function Home() {
 
       <div className="mt-8 grid grid-cols-1 gap-4 max-w-xl mx-auto">
         <a href="/api/standings" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          📊 Tabla de Posiciones
+          Tabla de Posiciones
         </a>
         <a href="/api/matches" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          📅 Partidos
+          Partidos
         </a>
         <a href="/api/scorers" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          ⚽ Goleadores
+          Goleadores
         </a>
         <a href="/api/teams" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          🏟️ Equipos
+          Equipos
         </a>
         <a href="/api/players?teamId=86" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          👤 Jugadores
+          Jugadores
         </a>
         <a href="/api/stats" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
-          📈 Estadísticas
+          Estadísticas
         </a>
       </div>
     </main>
