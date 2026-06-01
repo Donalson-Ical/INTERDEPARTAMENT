@@ -11,7 +11,7 @@ export default function Home() {
         <a href="/api/matches" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
           📅 Partidos
         </a>
-        <a href="/api/scorers" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
+        <a href="/goleadores.html" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
           ⚽ Goleadores
         </a>
         <a href="/api/teams" className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 text-center">
