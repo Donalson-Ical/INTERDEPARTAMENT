@@ -13,14 +13,19 @@ export async function GET() {
         await connection.end();
 
         return new Response(JSON.stringify({
-            mensaje: 'Conexión exitosa a base de datos',
+            mensaje: 'Conexión exitosa',
             totalEquipos: rows[0].total
         }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
         });
     } catch (error) {
-        return new Response(JSON.stringify({ error: error.message }), {
+        // Devuelve el error completo para verlo en el navegador
+        return new Response(JSON.stringify({
+            error: error.message,
+            stack: error.stack,
+            code: error.code
+        }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });

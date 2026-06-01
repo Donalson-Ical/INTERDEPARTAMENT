@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
             });
         }
 
-        return new Response(JSON.stringify(rows[0]), {
+        return new Response(JSON.stringify(rows[0], null, 2), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
         });
