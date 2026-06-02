@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas</title>
+    <style>
+        body { background:#121212; color:white; font-family:Arial; text-align:center; }
+        button { padding:10px; margin:10px; }
+    </style>
+</head>
+<body>
+
+<h1>📊 Estadísticas</h1>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<nav class="navbar">
+    <h1>INTERDEPARMENT</h1>
+</nav>
+
+<div class="container">
+    <h2>Jugadores</h2>
+
+    <!-- FILTROS -->
+    <div class="filtros">
+        <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrarJugadores()">
+
+        <select id="filtroEquipo" onchange="filtrarJugadores()">
+            <option value="">Todos</option>
+            <option value="Equipo A">Equipo A</option>
+            <option value="Equipo B">Equipo B</option>
+        </select>
+
+        <select id="ordenCampo" onchange="filtrarJugadores()">
+            <option value="goles">Goles</option>
+            <option value="asistencias">Asistencias</option>
+        </select>
+
+        <select id="ordenTipo" onchange="filtrarJugadores()">
+            <option value="desc">Mayor a menor</option>
+            <option value="asc">Menor a mayor</option>
+        </select>
+    </div>
+
+    <!-- TABLA -->
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>Goles</th>
+            <th>Asistencias</th>
+        </tr>
+        </thead>
+        <tbody id="tablaJugadores"></tbody>
+    </table>
+
+    <canvas id="grafica"></canvas>
+
+</div>
+
+<script src="app.js"></script>
+<p>Análisis y comparación</p>
+
+<button onclick="location.href='jugadores.html'">👤 Ir a Jugadores</button>
+<button onclick="location.href='equipos.html'">🏆 Ir a Equipos</button>
+<button onclick="location.href='index.html'">⬅ Inicio</button>
+
+</body>
+</html>
