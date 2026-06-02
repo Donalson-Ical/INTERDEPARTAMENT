@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buscar — INTERDEPARTAMENT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --verde:   #00c853;
+      --verde2:  #00e676;
+      --azul:    #2979ff;
+      --naranja: #ff6d00;
+      --oscuro:  #0a0f0a;
+      --gris1:   #111a11;
+      --gris2:   #1a271a;
+      --gris3:   #243224;
+      --texto:   #e8f5e9;
+      --subtexto:#90a890;
+    }
+    body { background: var(--oscuro); color: var(--texto); font-family: 'Inter', sans-serif; min-height: 100vh; }
+
+    header {
+      background: var(--gris1); border-bottom: 2px solid var(--verde);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+    }
+    .logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--verde); letter-spacing: 2px; }
+    .logo span { color: var(--texto); }
+    nav a {
+      color: var(--subtexto); text-decoration: none; font-size: .85rem;
+      font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+      margin-left: 2rem; transition: color .2s;
+    }
+    nav a:hover, nav a.active { color: var(--verde); }
+
+    .page-header {
+      background: var(--gris1); border-bottom: 1px solid var(--gris3); padding: 2rem;
+    }
+    .page-header h1 { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
+    .page-header h1 span { color: var(--verde); }
+    .page-header p { color: var(--subtexto); font-size: .85rem; margin-top: .3rem; }
+
+    .main { max-width: 900px; margin: 2.5rem auto; padding: 0 2rem; }
+
+    /* ── TABS DE MODO ── */
+    .tabs {
+      display: flex; gap: .5rem; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--gris3); padding-bottom: 0;
+    }
+    .tab {
+      padding: .65rem 1.25rem; font-size: .8rem; font-weight: 600;
+      letter-spacing: .5px; text-transform: uppercase;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      color: var(--subtexto); cursor: pointer; transition: all .2s;
+      margin-bottom: -1px;
+    }
+    .tab:hover { color: var(--texto); }
+    .tab.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    /* ── PANELES DE BÚSQUEDA ── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .search-card {
+      background: var(--gris1); border: 1px solid var(--gris3);
+      border-radius: 6px; padding: 2rem; margin-bottom: 2rem;
+    }
+    .search-card h2 {
+      font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: .5rem;
+    }
+    .search-card p {
+      font-size: .8rem; color: var(--subtexto); margin-bottom: 1.25rem; line-height: 1.6;
+    }
+    .estructura-tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: .2rem .6rem; border-radius: 2px; margin-bottom: 1rem;
+    }
+    .tag-avl     { background: rgba(41,121,255,.15); color: var(--azul); }
+    .tag-hash    { background: rgba(255,109,0,.15);  color: var(--naranja); }
+    .tag-lista   { background: rgba(0,200,83,.15);   color: var(--verde); }
+
+    .search-row { display: flex; gap: .75rem; }
+    input[type="text"], input[type="number"] {
+      flex: 1; background: var(--gris2); border: 1px solid var(--gris3);
+      border-radius: 3px; color: var(--texto); font-family: 'Inter', sans-serif;
+      font-size: .9rem; padding: .7rem 1rem; outline: none; transition: border-color .2s;
+    }
+    input:focus { border-color: var(--verde); }
+    .btn-buscar {
+      padding: .7rem 1.5rem; background: var(--verde); color: var(--oscuro);
+      font-family: 'Inter', sans-serif; font-size: .85rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; border: none;
+      border-radius: 3px; cursor: pointer; transition: background .2s;
+      white-space: nowrap;
+    }
+    .btn-buscar:hover { background: var(--verde2); }
+
+    /* ── RESULTADOS ── */
+    .resultados { margin-top: 1.5rem; }
+    .result-header {
+      font-size: .75rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--subtexto); margin-bottom: 1rem;
+    }
+
+    .jugador-card {
+      background: var(--gris1); border: 1px solid var(--gris3);
+      border-radius: 6px; padding: 1.5rem; margin-bottom: 1rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: start;
+    }
+    .jugador-nombre {
+      font-family: 'Oswald', sans-serif; font-size: 1.3rem;
+      font-weight: 700; letter-spacing: .5px; margin-bottom: .3rem;
+    }
+    .jugador-sub {
+      font-size: .8rem; color: var(--subtexto); margin-bottom: 1rem;
+    }
+    .jugador-stats {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Oswald', sans-serif; font-size: 1.4rem;
+      font-weight: 700; color: var(--verde);
+    }
+    .stat-lbl { font-size: .65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--subtexto); }
+    .badge {
+      display: inline-block; padding: .25rem .65rem; border-radius: 2px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .badge-verde { background: rgba(0,200,83,.15); color: var(--verde); }
+
+    .empty-msg {
+      text-align: center; padding: 2.5rem;
+      color: var(--subtexto); font-size: .9rem;
+      background: var(--gris1); border: 1px solid var(--gris3); border-radius: 6px;
+    }
+
+    footer {
+      border-top: 1px solid var(--gris3); padding: 1.5rem 2rem;
+      text-align: center; font-size: .75rem; color: var(--subtexto);
+      letter-spacing: .5px; margin-top: 3rem;
+    }
+    footer strong { color: var(--verde); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">INTER<span>DEPARTAMENT</span></div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="jugadores.html">Jugadores</a>
+    <a href="buscar.html" class="active">Buscar</a>
+  </nav>
+</header>
+
+<div class="page-header">
+  <h1>Buscar <span>Jugador</span></h1>
+  <p>Tres modos de búsqueda, cada uno usando una estructura de datos distinta.</p>
+</div>
+
+<div class="main">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="cambiarTab(0, this)">Por ID — AVL</button>
+    <button class="tab"        onclick="cambiarTab(1, this)">Por nombre exacto — Hash</button>
+    <button class="tab"        onclick="cambiarTab(2, this)">Búsqueda parcial — Lista</button>
+  </div>
+
+  <!-- PANEL 1: ID (AVL) -->
+  <div class="panel active" id="panel0">
+    <div class="search-card">
+      <div class="estructura-tag tag-avl">Árbol AVL — O(log n)</div>
+      <h2>Buscar por ID</h2>
+      <p>Utiliza el árbol AVL autobalanceado. La búsqueda está garantizada en O(log n) — con 1,000 jugadores solo necesita hasta 10 comparaciones.</p>
+      <div class="search-row">
+        <input type="number" id="inputId" placeholder="Ingresa el ID del jugador..." min="1"/>
+        <button class="btn-buscar" onclick="buscarPorId()">Buscar</button>
+      </div>
+    </div>
+    <div class="resultados" id="res0"></div>
+  </div>
+
+  <!-- PANEL 2: nombre exacto (Hash) -->
+  <div class="panel" id="panel1">
+    <div class="search-card">
+      <div class="estructura-tag tag-hash">Tabla Hash — O(1) promedio</div>
+      <h2>Buscar por nombre exacto</h2>
+      <p>Utiliza la tabla hash con encadenamiento. El nombre se convierte en un índice mediante una función hash polinomial y la búsqueda es en tiempo constante promedio.</p>
+      <div class="search-row">
+        <input type="text" id="inputExacto" placeholder="Nombre exacto del jugador..."/>
+        <button class="btn-buscar" onclick="buscarExacto()">Buscar</button>
+      </div>
+    </div>
+    <div class="resultados" id="res1"></div>
+  </div>
+
+  <!-- PANEL 3: parcial (Lista) -->
+  <div class="panel" id="panel2">
+    <div class="search-card">
+      <div class="estructura-tag tag-lista">Lista enlazada — O(n)</div>
+      <h2>Búsqueda parcial por nombre</h2>
+      <p>Recorre la lista enlazada nodo a nodo buscando coincidencias parciales sin distinguir mayúsculas. Útil cuando no se sabe el nombre completo. Retorna todos los resultados que contengan el texto buscado.</p>
+      <div class="search-row">
+        <input type="text" id="inputParcial" placeholder="Escribe parte del nombre..."/>
+        <button class="btn-buscar" onclick="buscarParcial()">Buscar</button>
+      </div>
+    </div>
+    <div class="resultados" id="res2"></div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>INTERDEPARTAMENT</strong> · Rodrigo Andres Yalibat Del Cid · 0902-24-8046 · Programación III · UMG Cobán
+</footer>
+
+<script>
+  const API = 'http://localhost:8080/api/jugadores';
+
+  function cambiarTab(idx, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel' + idx).classList.add('active');
+  }
+
+  function renderJugador(j) {
+    return `
+      <div class="jugador-card">
+        <div>
+          <div class="jugador-nombre">${j.nombre}</div>
+          <div class="jugador-sub">
+            ${j.equipo} &nbsp;·&nbsp;
+            <span class="badge badge-verde">${j.posicion}</span> &nbsp;·&nbsp;
+            ${j.nacionalidad} &nbsp;·&nbsp; ${j.edad} años
+          </div>
+          <div class="jugador-stats">
+            <div class="stat-item"><div class="stat-num">${j.goles}</div><div class="stat-lbl">Goles</div></div>
+            <div class="stat-item"><div class="stat-num">${j.asistencias}</div><div class="stat-lbl">Asistencias</div></div>
+            <div class="stat-item"><div class="stat-num">${j.partidosJugados}</div><div class="stat-lbl">Partidos</div></div>
+            <div class="stat-item"><div class="stat-num">${j.promedioPases}</div><div class="stat-lbl">Prom. pases</div></div>
+          </div>
+        </div>
+        <div style="font-family:'Oswald',sans-serif;font-size:2rem;color:var(--subtexto);opacity:.4">#${j.id}</div>
+      </div>
+    `;
+  }
+
+  async function buscarPorId() {
+    const id  = document.getElementById('inputId').value.trim();
+    const div = document.getElementById('res0');
+    if (!id) { div.innerHTML = ''; return; }
+    try {
+      const res = await fetch(`${API}/${id}`);
+      if (res.status === 404) {
+        div.innerHTML = `<div class="empty-msg">No se encontró ningún jugador con ID <strong>${id}</strong>.</div>`;
+        return;
+      }
+      const j = await res.json();
+      div.innerHTML = `<div class="result-header">Resultado — Árbol AVL</div>` + renderJugador(j);
+    } catch {
+      div.innerHTML = `<div class="empty-msg">⚠ No se pudo conectar con el servidor.</div>`;
+    }
+  }
+
+  async function buscarExacto() {
+    const nombre = document.getElementById('inputExacto').value.trim();
+    const div    = document.getElementById('res1');
+    if (!nombre) { div.innerHTML = ''; return; }
+    try {
+      const res = await fetch(`${API}/exacto?nombre=${encodeURIComponent(nombre)}`);
+      if (res.status === 404) {
+        div.innerHTML = `<div class="empty-msg">No se encontró ningún jugador con el nombre <strong>${nombre}</strong>.</div>`;
+        return;
+      }
+      const j = await res.json();
+      div.innerHTML = `<div class="result-header">Resultado — Tabla Hash</div>` + renderJugador(j);
+    } catch {
+      div.innerHTML = `<div class="empty-msg">⚠ No se pudo conectar con el servidor.</div>`;
+    }
+  }
+
+  async function buscarParcial() {
+    const nombre = document.getElementById('inputParcial').value.trim();
+    const div    = document.getElementById('res2');
+    if (!nombre) { div.innerHTML = ''; return; }
+    try {
+      const res  = await fetch(`${API}/buscar?nombre=${encodeURIComponent(nombre)}`);
+      const data = await res.json();
+      if (!data.length) {
+        div.innerHTML = `<div class="empty-msg">No se encontraron jugadores que coincidan con <strong>"${nombre}"</strong>.</div>`;
+        return;
+      }
+      div.innerHTML =
+        `<div class="result-header">${data.length} resultado${data.length > 1 ? 's' : ''} — Lista enlazada</div>` +
+        data.map(renderJugador).join('');
+    } catch {
+      div.innerHTML = `<div class="empty-msg">⚠ No se pudo conectar con el servidor.</div>`;
+    }
+  }
+
+  // buscar al presionar Enter
+  document.getElementById('inputId').addEventListener('keyup',      e => e.key === 'Enter' && buscarPorId());
+  document.getElementById('inputExacto').addEventListener('keyup',  e => e.key === 'Enter' && buscarExacto());
+  document.getElementById('inputParcial').addEventListener('keyup', e => e.key === 'Enter' && buscarParcial());
+</script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INTERDEPARTAMENT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde:   #00c853;
+      --verde2:  #00e676;
+      --oscuro:  #0a0f0a;
+      --gris1:   #111a11;
+      --gris2:   #1a271a;
+      --gris3:   #243224;
+      --texto:   #e8f5e9;
+      --subtexto:#90a890;
+    }
+
+    body {
+      background: var(--oscuro);
+      color: var(--texto);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--gris1);
+      border-bottom: 2px solid var(--verde);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--verde);
+      letter-spacing: 2px;
+    }
+    .logo span { color: var(--texto); }
+    nav a {
+      color: var(--subtexto);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 2rem;
+      transition: color .2s;
+    }
+    nav a:hover, nav a.active { color: var(--verde); }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,200,83,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-size: .72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde);
+      background: rgba(0,200,83,.1);
+      border: 1px solid rgba(0,200,83,.3);
+      padding: .3rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--verde);
+    }
+    .hero p {
+      color: var(--subtexto);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: .75rem 2rem;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--verde);
+      color: var(--oscuro);
+    }
+    .btn-primary:hover { background: var(--verde2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--verde);
+      border: 1.5px solid var(--verde);
+    }
+    .btn-outline:hover { background: rgba(0,200,83,.1); transform: translateY(-2px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--gris3);
+      border-bottom: 1px solid var(--gris3);
+      background: var(--gris1);
+    }
+    .stat {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--gris3);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--verde);
+    }
+    .stat-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--subtexto);
+      margin-top: .3rem;
+    }
+
+    /* ── CARDS ── */
+    .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+      color: var(--texto);
+    }
+    .section-title span { color: var(--verde); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--gris1);
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s, transform .2s;
+      display: block;
+    }
+    .card:hover { border-color: var(--verde); transform: translateY(-4px); }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      margin-bottom: .5rem;
+      color: var(--texto);
+    }
+    .card-desc {
+      font-size: .82rem;
+      color: var(--subtexto);
+      line-height: 1.6;
+    }
+    .card-arrow {
+      margin-top: 1.25rem;
+      font-size: .78rem;
+      color: var(--verde);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── JUGADORES RECIENTES ── */
+    .tabla-wrapper {
+      background: var(--gris1);
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: var(--gris2); }
+    th {
+      padding: .8rem 1rem;
+      text-align: left;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--subtexto);
+    }
+    td {
+      padding: .85rem 1rem;
+      font-size: .85rem;
+      border-top: 1px solid var(--gris3);
+      color: var(--texto);
+    }
+    tr:hover td { background: var(--gris2); }
+    .badge {
+      display: inline-block;
+      padding: .2rem .6rem;
+      border-radius: 2px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .badge-verde { background: rgba(0,200,83,.15); color: var(--verde); }
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--subtexto);
+      font-size: .9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gris3);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: .75rem;
+      color: var(--subtexto);
+      letter-spacing: .5px;
+    }
+    footer strong { color: var(--verde); }
+
+    @media (max-width: 600px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      nav a { margin-left: 1rem; font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">INTER<span>DEPARTAMENT</span></div>
+  <nav>
+    <a href="index.html" class="active">Inicio</a>
+    <a href="jugadores.html">Jugadores</a>
+    <a href="buscar.html">Buscar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Sistema de<br><em>Estadísticas</em><br>Interdepartamental</h1>
+  <p>Gestión de jugadores y estadísticas de fútbol con estructuras de datos implementadas desde cero en Java.</p>
+  <div class="hero-btns">
+    <a href="jugadores.html" class="btn btn-primary">Ver jugadores</a>
+    <a href="buscar.html" class="btn btn-outline">Buscar jugador</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num" id="totalJugadores">—</div>
+    <div class="stat-label">Jugadores registrados</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Estructuras de datos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">O(log n)</div>
+    <div class="stat-label">Búsqueda por ID (AVL)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">O(1)</div>
+    <div class="stat-label">Búsqueda por nombre (Hash)</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Módulos del <span>sistema</span></div>
+  <div class="cards">
+    <a class="card" href="jugadores.html">
+      <div class="card-icon">⚽</div>
+      <div class="card-title">Jugadores</div>
+      <div class="card-desc">Registra, consulta y elimina jugadores. Todos los datos pasan por las cuatro estructuras simultáneamente.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a class="card" href="buscar.html">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">Buscar</div>
+      <div class="card-desc">Búsqueda por ID usando el árbol AVL, por nombre exacto con la tabla hash, o búsqueda parcial con la lista.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Estructuras activas</div>
+      <div class="card-desc">Lista enlazada · Tabla hash · Cola FIFO · Árbol AVL — todas sincronizadas en memoria por JugadorService.</div>
+      <div class="card-arrow" style="color:var(--subtexto)">Spring Boot 3.2.5</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Últimos jugadores <span>registrados</span></div>
+  <div class="tabla-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Equipo</th>
+          <th>Posición</th>
+          <th>Goles</th>
+          <th>Asistencias</th>
+        </tr>
+      </thead>
+      <tbody id="tablaJugadores">
+        <tr><td colspan="6" class="empty-state">Cargando jugadores...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <strong>INTERDEPARTAMENT</strong> · Rodrigo Andres Yalibat Del Cid · 0902-24-8046 · Programación III · UMG Cobán
+</footer>
+
+<script>
+  const API = 'http://localhost:8080/api/jugadores';
+
+  async function cargarJugadores() {
+    try {
+      const res  = await fetch(API);
+      const data = await res.json();
+
+      // actualiza el contador del hero
+      document.getElementById('totalJugadores').textContent = data.length;
+
+      const tbody = document.getElementById('tablaJugadores');
+      if (!data.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No hay jugadores registrados aún.</td></tr>';
+        return;
+      }
+
+      // muestra los últimos 6
+      const recientes = data.slice(-6).reverse();
+      tbody.innerHTML = recientes.map(j => `
+        <tr>
+          <td>${j.id}</td>
+          <td><strong>${j.nombre}</strong></td>
+          <td>${j.equipo}</td>
+          <td><span class="badge badge-verde">${j.posicion}</span></td>
+          <td>${j.goles}</td>
+          <td>${j.asistencias}</td>
+        </tr>
+      `).join('');
+    } catch (e) {
+      document.getElementById('tablaJugadores').innerHTML =
+        '<tr><td colspan="6" class="empty-state">⚠ No se pudo conectar con el servidor. Asegúrate de que Spring Boot esté corriendo en localhost:8080</td></tr>';
+    }
+  }
+
+  cargarJugadores();
+</script>
+</body>
+</html>
