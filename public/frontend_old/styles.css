@@ -1,0 +1,9 @@
+body{background: #000000;color:white;font-family: "Times New Roman";margin:0;}
+.navbar{background: #0ab9f8;padding:1px;}
+.container{padding:10px;}
+.filtros{margin-bottom:1px;}
+input,select{padding:15px;margin-right:1px;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:15px;border-bottom:2px solid #55d101;text-align:center;}
+th{background: #0032c8;color: #efe009;}
+canvas{margin-top:10px;background:white;}
