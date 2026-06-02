@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranking Goleadores</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Ranking de Goleadores</h1>
+    <div id="datos">Cargando...</div>
+    <script>
+        fetch('/api/ranking/goleadores')
+            .then(res => res.json())
+            .then(data => {
+                let html = '<table><th>Jugador</th><th>Equipo</th><th>Goles</th></tr>';
+                data.forEach(j => {
+                    html += `<tr><td>${j.jugador}</td><td>${j.equipo}</td><td>${j.goles}</td></tr>`;
+                });
+                html += '</table>';
+                document.getElementById('datos').innerHTML = html;
+            })
+            .catch(err => {
+                document.getElementById('datos').innerHTML = 'Error: ' + err;
+            });
+    </script>
+</body>
+</html>
