@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2519e205-ee2b-45b7-bb20-66e07a2105f2" name="Changes" comment="feat: implementar Tabla Hash con encadenamiento" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;RodrigoYalibat&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Donalson-Ical/INTERDEPARTAMENT.git&quot;,
+    &quot;accountId&quot;: &quot;155fe083-7445-4bd4-8d58-493e571169da&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="3Bx10hqZPtCX4P9ET4Jz6AxX9zh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.InterdepartamentApplication.executor": "Run",
+    "Maven.INTERDEPARTAMENT [clean].executor": "Run",
+    "Maven.INTERDEPARTAMENT [install].executor": "Run",
+    "Maven.INTERDEPARTAMENT [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "feature/estructuras-datos",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/RAYDC/Desktop/UMG/SEMESTRE 5/INTERDEPARTAMENT",
+    "onboarding.tips.debug.path": "C:/Users/RAYDC/Desktop/UMG/SEMESTRE 5/PROGRA/INTERDEPARTAMENT/src/main/java/org/rodrodrod/Main.java",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RAYDC\Desktop\UMG\SEMESTRE 5\PROGRA\INTERDEPARTAMENT\.idea\backend" />
+      <recent name="C:\Users\RAYDC\Desktop\UMG\SEMESTRE 5\PROGRA\INTERDEPARTAMENT\.idea\backend\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.rodrodrod.modelo" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2519e205-ee2b-45b7-bb20-66e07a2105f2" name="Changes" comment="" />
+      <created>1775415686188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775415686188</updated>
+    </task>
+    <task id="LOCAL-00001" summary="feat: agregar modelo Jugador">
+      <option name="closed" value="true" />
+      <created>1775416448327</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775416448329</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: implementar Lista Enlazada simple">
+      <option name="closed" value="true" />
+      <created>1775416476654</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775416476654</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: implementar Tabla Hash con encadenamiento">
+      <option name="closed" value="true" />
+      <created>1775416490736</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775416490736</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: agregar modelo Jugador" />
+    <MESSAGE value="feat: implementar Lista Enlazada simple" />
+    <MESSAGE value="feat: implementar Tabla Hash con encadenamiento" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: implementar Tabla Hash con encadenamiento" />
+  </component>
+</project>
